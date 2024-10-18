@@ -1,3 +1,8 @@
+A wordle game
+example see https://wordly.org/
+
+
+
 # Set up Greenfoot for VSCode
 
 [Mac]
