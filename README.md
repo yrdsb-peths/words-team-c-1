@@ -1,4 +1,4 @@
-A wordle game
+A wordle game.
 example see https://wordly.org/
 
 
