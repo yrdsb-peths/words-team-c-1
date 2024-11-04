@@ -52,7 +52,7 @@ public class WordleGame extends JFrame {
             }
             resultArea.append("Guess: " + guess + " -> " + feedback.toString() + "\n");
 
-            // chech if win the game
+            // check if win the game
             if (guess.equals(targetWord)) {
                 JOptionPane.showMessageDialog(null, "Congratulations! You guessed the word!");
                 resultArea.append("You've guessed the word!\n");
