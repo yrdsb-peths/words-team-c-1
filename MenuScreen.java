@@ -6,8 +6,8 @@ public class MenuScreen extends World {
     
     //main menu screen
     public MenuScreen() {    
-        super(600, 400, 1);
-        addObject(new Button(this::goInstructions, "Instructions"), 300, 360); 
+        super(600, 350, 1);
+        addObject(new Button(this::goInstructions, "Instructions"), 300, 310); 
 
         // Avatar Selection
 
