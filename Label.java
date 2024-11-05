@@ -20,4 +20,14 @@ public class Label extends Actor {
         image = new GreenfootImage(text, fontSize, Color.BLACK, Color.WHITE);
         setImage(image);
     }
+    
+    public void setImageColor(Color color) {
+    GreenfootImage img = getImage();
+    img.setColor(color);
+    img.fill();
+    img.setColor(Color.BLACK); 
+    img.drawString(text, 5, fontSize);
+    setImage(img);
+}
+
 }
