@@ -26,34 +26,36 @@ public class GameScreen extends World {
     }
 
     public void submitGuess() {
-        if (input.length() == 5) {
-            List<String> feedback = wordChecker.checkGuess(input);
-            StringBuilder feedbackText = new StringBuilder();
+    if (input.length() == 5) {
+        List<String> feedback = wordChecker.checkGuess(input);
+        StringBuilder feedbackText = new StringBuilder("<html>");  // Start with HTML
 
-            // Build visual feedback based on the color code
-            for (int i = 0; i < feedback.size(); i++) {
-                String color = feedback.get(i);
-                char guessedChar = input.charAt(i);
-                if (color.equals("green")) {
-                    feedbackText.append("[").append(guessedChar).append("]").append(" "); // Green
-                } else if (color.equals("yellow")) {
-                    feedbackText.append("(").append(guessedChar).append(")").append(" "); // Yellow
-                } else {
-                    feedbackText.append(guessedChar).append(" "); // Default color
-                }
+        // Build the feedback with color
+        for (int i = 0; i < feedback.size(); i++) {
+            String color = feedback.get(i);
+            char guessedChar = input.charAt(i);
+            if (color.equals("green")) {
+                feedbackText.append("<font color='green'>").append(guessedChar).append("</font> ");
+            } else if (color.equals("yellow")) {
+                feedbackText.append("<font color='yellow'>").append(guessedChar).append("</font> ");
+            } else {
+                feedbackText.append("<font color='gray'>").append(guessedChar).append("</font> ");
             }
-            feedbackLabel.setText("Feedback: " + feedbackText.toString());
-            
-            if (wordChecker.isCorrectGuess(input)) {
-                feedbackLabel.setText("Congratulations! You've guessed the word!");
-            }
-
-            input = "";  // Clear input for the next guess
-            inputLabel.setText("Guess: ");
-        } else {
-            feedbackLabel.setText("Please enter a 5-letter word.");
         }
+
+        feedbackText.append("</html>");  // End HTML content
+        feedbackLabel.setText("Feedback: " + feedbackText.toString());
+
+        if (wordChecker.isCorrectGuess(input)) {
+            feedbackLabel.setText("Congratulations! You've guessed the word!");
+        }
+
+        input = "";  // Clear input for the next guess
+        inputLabel.setText("Guess: ");
+    } else {
+        feedbackLabel.setText("Please enter a 5-letter word.");
     }
+}
 
     public void keyPressed(String key) {
         if (input.length() < 5 && key.length() == 1 && Character.isLetter(key.charAt(0))) {
