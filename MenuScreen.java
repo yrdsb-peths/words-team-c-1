@@ -11,11 +11,15 @@ public class MenuScreen extends World {
 
         // Avatar Selection
 
-
+        addObject(new Button(this::goGameScreens, "Start"), 300, 230);
     }
     
     //going back to intruction screen
     public void goInstructions() {
         Greenfoot.setWorld(new InstructionScreen(this));
+    }
+    
+    public void goGameScreens() {
+        Greenfoot.setWorld(new GameScreen());
     }
 }
