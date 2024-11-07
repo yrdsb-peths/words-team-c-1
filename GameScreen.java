@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GameScreen extends World {
     private WordChecker wordChecker;
@@ -11,12 +12,16 @@ public class GameScreen extends World {
 
     public GameScreen() {
         super(600, 400, 1);
-        wordChecker = new WordChecker("APPLE");
-
+        
+        String[] words = {"APPLE", "BERRY", "GRAPE", "LEMON", "ERROR", "GREAT", "LIMIT"};
+        
+        String targetWord = words[new Random().nextInt(words.length)];
+        wordChecker = new WordChecker(targetWord);
+        
         inputLabel = new Label("Guess: ", 24);
         guessLabels = new ArrayList<>();
         
-        addObject(inputLabel, 300, 325);  // Input label at the bottom
+        addObject(inputLabel, 300, 325);  
         addObject(new Button(this::submitGuess, "Submit"), 300, 375);
     }
 
@@ -58,7 +63,6 @@ public class GameScreen extends World {
         }
     }
 
-    
     private Label createColoredLabel(char letter, String color) {
         Color bgColor;
         switch (color) {
@@ -94,4 +98,3 @@ public class GameScreen extends World {
         }
     }
 }
-
